@@ -1,26 +1,66 @@
+const results = document.querySelector(".results");
+const para1 = document.createElement("p");
+const para2 = document.createElement("p");
+const h2 = document.createElement("h2");
+
+// clearing screen
+function clearPoints() {
+  results.removeChild(para1);
+  results.removeChild(para2);
+}
+
 let computerSelection = computerPlay();
 let wins = 0;
 let losses = 0;
-function game() {
-  for (let i = 0; i < 6; i++) {
-    if (i < 5) {console.log(i);
-    let computerSelection = computerPlay();
-    let playerSelection = prompt("Rock, Paper or Scissors", "Rock Paper Scissors");
-    console.log(playRound(playerSelection, computerSelection));
+
+// clearing animation
+function ani3_clear() {
+  const ani3 = document.querySelector("h2");
+  ani3.addEventListener("animationend", () => {
+    results.removeChild(ani3);
+  });
+}
+
+function reset() {
+  if (wins + losses === 5) {
+    if (wins > losses) {
+      clearPoints();
+      h2.innerHTML = "You win in <span>5</span> rounds";
+      results.appendChild(h2);
+      ani3_clear();
     } else {
-      alert(`You have ${wins} wins and ${losses} losses.`)
+      clearPoints();
+      h2.innerHTML = "You lost in <span>5</span> rounds";
+      results.appendChild(h2);
+      ani3_clear();
     }
+    return [wins -= wins, losses -= losses];
   }
 }
+
+function game() {
+      let imgs = document.querySelectorAll("img");
+      imgs.forEach((img) => {
+        img.addEventListener("click", () => {
+          if (img.id) {
+            let computerSelection = computerPlay();
+            playRound(img.id, computerSelection);
+            para1.textContent = `You have ${wins} points`;
+            para2.textContent = `Computer have ${losses} points`;
+            results.appendChild(para1);
+            results.appendChild(para2);
+            reset();
+          }
+        });
+      });
+  }
 // Checking
 function playRound(playerSelection, computerSelection) {
   if (playerSelection.toLowerCase() === computerSelection) {
     console.log("You win, amazing");
-    alert("Win");
     wins += 1;
   } else {
     console.log("You loose;{");
-    alert("Lose")
     losses += 1;
   }
 }
@@ -40,3 +80,11 @@ function computerPlay() {
   }
 }
 game();
+
+// animation delate
+
+const body = document.querySelector("body");
+const ani2 = document.querySelector(".animated-text");
+ani2.addEventListener("animationend", () => {
+  body.removeChild(ani2);
+});

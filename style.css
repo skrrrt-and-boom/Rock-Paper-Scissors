@@ -1,0 +1,78 @@
+body {
+  text-align: center;
+  font-family: 'Arbutus', cursive;
+  font-size: 30px;
+  color: rgb(214, 105, 21);
+  background-color: #3ab779;
+  background-image: url(graphics/background-image.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+span {
+  font-size: 150%;
+}
+
+h1 {
+  padding: 20px;
+}
+
+h2 {
+  background-color: rgba(255,255,255,0.7);
+  animation: ani3 2s ease-out forwards;
+  opacity: 0;
+}
+@keyframes ani3 {
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.images {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+ img {
+   width: 200px;
+   height: 200px;
+ }
+ img:hover {
+   background-color: rgba(255,255,255,0.7);
+   border-radius: 7px;
+ }
+.results {
+  color: #8c2220;
+}
+p {
+  width: 500px;
+  margin-left: 35%;
+  background-color: rgba(255,255,255,0.7);
+  animation: ani1 1s ease-out forwards;
+  opacity: 0;
+}
+@keyframes ani1 {
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.animated-text {
+  width: auto;
+  margin-left: auto;
+  background-color: rgba(255,255,255,0);
+  font-size: 21px;
+  opacity: 1;
+  animation: ani2 5s steps(88);
+  overflow: hidden;
+  white-space: nowrap;
+}
+@keyframes ani2 {
+  0% {
+    width:0ch;
+  }
+  100% {
+    width: 88ch;
+  }
+}
